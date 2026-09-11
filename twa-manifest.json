@@ -1,0 +1,30 @@
+{
+  "packageId": "com.samposhi.farm.twa",
+  "host": "samposhi.farm",
+  "name": "Samposhi Farm Automation",
+  "launcherName": "Samposhi Farm",
+  "themeColor": "#22C55E",
+  "navigationColor": "#16A34A",
+  "backgroundColor": "#F6F8FC",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://samposhi.farm/icons/icon-512.png",
+  "maskableIconUrl": "https://samposhi.farm/icons/icon-maskable-512.png",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://samposhi.farm/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isRequestInterceptionEnabled": false
+}

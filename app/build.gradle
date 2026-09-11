@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.samposhi.farm.twa'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.samposhi.farm.twa"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Centralized TWA manifest configuration:
+        // Update these values to point to your hosted PWA domain!
+        manifestPlaceholders = [
+            hostName: "samposhi.farm",
+            defaultUrl: "https://samposhi.farm/",
+            launcherName: "Samposhi Farm",
+            themeColor: "#22C55E",
+            navigationColor: "#16A34A",
+            backgroundColor: "#F6F8FC",
+            providerAuthority: "com.samposhi.farm.twa.fileprovider",
+            assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "web", "site": "https://samposhi.farm" } }]'
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    // Google Official Android Browser Helper for Trusted Web Activity (TWA)
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+    implementation 'androidx.browser:browser:1.8.0'
+    implementation 'androidx.core:core:1.13.1'
+}

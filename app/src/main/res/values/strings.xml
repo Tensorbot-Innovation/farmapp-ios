@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Samposhi Farm</string>
+    <string name="provider_authority">com.samposhi.farm.twa.fileprovider</string>
+</resources>

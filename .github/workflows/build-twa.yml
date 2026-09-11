@@ -1,0 +1,66 @@
+name: Build Samposhi Farm TWA APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-twa:
+    name: Assemble TWA APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python Image Tools
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pillow
+
+      - name: Set up Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Generate Mipmap Icons
+        run: |
+          python3 SamposhiFarm_TWA/generate_icons.py
+
+      - name: Ensure Gradle Wrapper is Ready
+        working-directory: SamposhiFarm_TWA
+        run: |
+          mkdir -p gradle/wrapper
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+            curl -fsSL -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.4.0/gradle/wrapper/gradle-wrapper.jar || \
+            curl -fsSL -o gradle/wrapper/gradle-wrapper.jar https://repo.maven.apache.org/maven2/org/gradle/gradle-wrapper/8.4/gradle-wrapper-8.4.jar
+          fi
+          chmod +x gradlew
+
+      - name: Build TWA APK with Gradle
+        working-directory: SamposhiFarm_TWA
+        run: |
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Organize Built Artifact
+        run: |
+          mkdir -p dist-twa
+          cp SamposhiFarm_TWA/app/build/outputs/apk/debug/app-debug.apk dist-twa/SamposhiFarm-TWA.apk
+          ls -la dist-twa/
+
+      - name: Upload TWA APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SamposhiFarm-TWA-APK
+          path: dist-twa/SamposhiFarm-TWA.apk
+          retention-days: 30
