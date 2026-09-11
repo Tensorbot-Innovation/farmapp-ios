@@ -24,16 +24,14 @@ android {
             themeColor: "#22C55E",
             navigationColor: "#16A34A",
             backgroundColor: "#F6F8FC",
-            providerAuthority: "com.samposhi.farm.twa.fileprovider",
-            assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "web", "site": "https://samposhi.farm" } }]'
+            providerAuthority: "com.samposhi.farm.twa.fileprovider"
         ]
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
         }
         debug {
             applicationIdSuffix ".debug"

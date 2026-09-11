@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Samposhi Farm</string>
     <string name="provider_authority">com.samposhi.farm.twa.fileprovider</string>
+    <string name="asset_statements" translatable="false">
+        [{\n
+          \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n
+          \"target\": {\n
+            \"namespace\": \"web\",\n
+            \"site\": \"https://samposhi.farm\"\n
+          }\n
+        }]
+    </string>
 </resources>

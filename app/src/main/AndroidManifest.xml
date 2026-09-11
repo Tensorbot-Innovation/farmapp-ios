@@ -14,7 +14,7 @@
 
         <meta-data
             android:name="asset_statements"
-            android:value="${assetStatements}" />
+            android:resource="@string/asset_statements" />
 
         <!-- Google Trusted Web Activity Launcher -->
         <activity
