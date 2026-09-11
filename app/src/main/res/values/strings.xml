@@ -6,7 +6,7 @@
           \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n
           \"target\": {\n
             \"namespace\": \"web\",\n
-            \"site\": \"https://samposhi.farm\"\n
+            \"site\": \"https://farmapp-pwa.vercel.app\"\n
           }\n
         }]
     </string>

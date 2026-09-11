@@ -55,19 +55,18 @@ Open [`app/build.gradle`](file:///Users/shahidkibs/Documents/Projects/SamposhiFa
 
 ```groovy
 manifestPlaceholders = [
-    hostName: "samposhi.farm",                              // Your HTTPS domain without protocol
-    defaultUrl: "https://samposhi.farm/",                   // The full startup URL of your PWA
+    hostName: "farmapp-pwa.vercel.app",                     // Your HTTPS domain without protocol
+    defaultUrl: "https://farmapp-pwa.vercel.app/",          // The full startup URL of your PWA
     launcherName: "Samposhi Farm",                          // App title under the home screen icon
     themeColor: "#22C55E",                                  // Status bar color (Green)
     navigationColor: "#16A34A",                             // Android bottom nav bar color
     backgroundColor: "#F6F8FC",                             // Splash background color
-    providerAuthority: "com.samposhi.farm.twa.fileprovider",
-    assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "web", "site": "https://samposhi.farm" } }]'
+    providerAuthority: "com.samposhi.farm.twa.fileprovider"
 ]
 ```
 
-> [!TIP]
-> You can set `defaultUrl` to any hosted HTTPS URL (e.g. `https://yourusername.github.io/SamposhiFarm_PWA/`, Firebase Hosting, Vercel, or Netlify).
+> [!NOTE]
+> Pre-configured to point directly to your live Vercel PWA: `https://farmapp-pwa.vercel.app/`.
 
 ---
 

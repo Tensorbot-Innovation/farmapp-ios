@@ -1,6 +1,6 @@
 {
   "packageId": "com.samposhi.farm.twa",
-  "host": "samposhi.farm",
+  "host": "farmapp-pwa.vercel.app",
   "name": "Samposhi Farm Automation",
   "launcherName": "Samposhi Farm",
   "themeColor": "#22C55E",
@@ -8,13 +8,13 @@
   "backgroundColor": "#F6F8FC",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://samposhi.farm/icons/icon-512.png",
-  "maskableIconUrl": "https://samposhi.farm/icons/icon-maskable-512.png",
+  "iconUrl": "https://farmapp-pwa.vercel.app/icons/icon-512.png",
+  "maskableIconUrl": "https://farmapp-pwa.vercel.app/icons/icon-maskable-512.png",
   "appVersionName": "1.0.0",
   "appVersionCode": 1,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://samposhi.farm/manifest.json",
+  "webManifestUrl": "https://farmapp-pwa.vercel.app/manifest.json",
   "fallbackType": "customtabs",
   "features": {
     "locationDelegation": {

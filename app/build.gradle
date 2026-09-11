@@ -18,8 +18,8 @@ android {
         // Centralized TWA manifest configuration:
         // Update these values to point to your hosted PWA domain!
         manifestPlaceholders = [
-            hostName: "samposhi.farm",
-            defaultUrl: "https://samposhi.farm/",
+            hostName: "farmapp-pwa.vercel.app",
+            defaultUrl: "https://farmapp-pwa.vercel.app/",
             launcherName: "Samposhi Farm",
             themeColor: "#22C55E",
             navigationColor: "#16A34A",
