@@ -1,0 +1,50 @@
+name: Build Samposhi Farm iOS IPA
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-ipa:
+    name: Assemble iOS IPA
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Xcode Toolchain
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app || sudo xcode-select -s /Applications/Xcode_15.app || true
+          xcodebuild -version
+
+      - name: Build Samposhi Farm .app with xcodebuild
+        run: |
+          xcodebuild clean build \
+            -project SamposhiFarm.xcodeproj \
+            -scheme SamposhiFarm \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES
+
+      - name: Package .ipa File
+        run: |
+          mkdir -p dist-ipa/Payload
+          cp -r build/Build/Products/Release-iphoneos/SamposhiFarm.app dist-ipa/Payload/
+          cd dist-ipa
+          zip -r -y SamposhiFarm-v2.2.ipa Payload
+          rm -rf Payload
+          ls -lh SamposhiFarm-v2.2.ipa
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SamposhiFarm-iOS-IPA
+          path: dist-ipa/SamposhiFarm-v2.2.ipa
+          retention-days: 30
